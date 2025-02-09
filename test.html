@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: red;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: lightgreen;
+            font-size: 20px;
+        }
+        .no {
+            background-color: lightcoral;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine Dharshumaaa ? ❤️</h1>
+    <div class="image-container">
+        <img src="WhatsApp Image 2025-02-09 at 22.41.52_207a1af4.jpg" alt="Image 1">
+        <img src="WhatsApp Image 2025-02-09 at 22.41.52_68100650.jpg" alt="Image 2">
+        <img src="WhatsApp Image 2025-02-09 at 23.04.54_7ff47f47.jpg" alt="Image 3">
+        <img src="WhatsApp Image 2025-02-09 at 22.41.52_e8ab148f.jpg" alt="Image 4">
+        <img src="WhatsApp Image 2025-02-09 at 23.02.41_242de440.jpg" alt="Image 5">
+        <img src="WhatsApp Image 2025-02-09 at 22.41.52_09368201.jpg" alt="Image 6">
+        <img src="WhatsApp Image 2025-02-09 at 22.41.52_d69269b9.jpg" alt="Image 7">
+    </div>
+    <div class="buttons">
+        <button class="yes" id="yesButton" onclick="yesClicked()">Yes! 😍</button>
+        <button class="no" id="noButton" onclick="changeNoText()">No 😭</button>
+    </div>
+    
+    <script>
+        let noClickCount = 0;
+        let yesButton = document.getElementById("yesButton");
+        let noButton = document.getElementById("noButton");
+        let noTexts =  ["Ennadi ipdi pandre ? 😢", "Unmailaya Va? 😭", "Olunga Yoosi! 🥺", "Kadaisi Chance kudukuren 💔", "Sorry di neethu theriyame pesiten 😭","Pretty Pleasssseeeeeee ❤️","Ithuku Mela Unaku option ille avlo tha yes sollliru !"];
+        
+        function changeNoText() {
+            if (noClickCount < noTexts.length) {
+                noButton.innerText = noTexts[noClickCount];
+                noClickCount++;
+                yesButton.style.fontSize = `${20 + noClickCount * 10}px`; 
+            } else {
+                noButton.style.display = "none"; 
+            }
+        }
+        
+        function yesClicked() {
+            alert("Yay! I love you Dharshumaaaaa! ❤️");
+            confettiEffect();
+        }
+        
+        function confettiEffect() {
+            let confettiContainer = document.createElement("div");
+            confettiContainer.style.position = "fixed";
+            confettiContainer.style.top = "0";
+            confettiContainer.style.left = "0";
+            confettiContainer.style.width = "100%";
+            confettiContainer.style.height = "100%";
+            confettiContainer.style.pointerEvents = "none";
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.style.width = "10px";
+                confetti.style.height = "10px";
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.position = "absolute";
+                confetti.style.top = "0";
+                confetti.style.left = `${Math.random() * window.innerWidth}px`;
+                confetti.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+</html>
